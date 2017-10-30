@@ -4,6 +4,8 @@
   :license {
     :name "Apache License Version 2.0"
     :url "https://www.apache.org/licenses/LICENSE-2.0"}
+  :exclusions [
+    [org.clojure/clojure]]
   :dependencies [
     [clojusc/twig "0.3.2"]
     [org.clojure/clojure "1.8.0"]
