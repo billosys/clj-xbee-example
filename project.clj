@@ -9,4 +9,33 @@
     [org.clojure/clojure "1.8.0"]
     [systems.billo/clj-xbee "0.1.0-SNAPSHOT"]]
   :main xbee-example.core
-  :java-opts ["-Djava.library.path=lib"])
+  :java-opts ["-Djava.library.path=lib"]
+  :profiles {
+    :ubercompile {:aot :all}
+    :test {
+      :plugins [
+        [lein-ancient "0.6.14"]
+        [jonase/eastwood "0.2.5"]
+        [lein-bikeshed "0.5.0" :exclusions [org.clojure/tools.namespace]]
+        [lein-kibit "0.1.5"]
+        [venantius/yagni "0.1.4"]]}}
+  :aliases {
+    "repl"
+      ["with-profile" "+test,+custom-repl" "repl"]
+    "check-deps"
+      ^{:doc (str "Check if any deps have out-of-date versions")}
+      ["with-profile" "+test" "ancient" "check" ":all"]
+    "lint"
+      ^{:doc (str "Perform lint checking")}
+      ["with-profile" "+test" "kibit"]
+    "ubercompile"
+      ["with-profile" "+ubercompile" "compile"]
+    "build"
+      ^{:doc (str "Perform build tasks for CI/CD & releases\n\n"
+                 "Additional aliases:")}
+      ["with-profile" "+test" "do"
+        ["check-deps"]
+        ["lint"]
+        ["test"]
+        ["compile"]
+        ["uberjar"]]})
