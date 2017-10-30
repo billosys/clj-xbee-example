@@ -2,9 +2,18 @@
 
 *An Example Application Built with the clj-xbee Wrapper Library*
 
+
+## Setup
+
+* Plugin your XBee
+* List your serial ports (if you don't know the port your XBee is running on):
+  `ls -l /dev/tty.*`
+
+
 ## Usage
 
 TBD
+
 
 ## License
 
