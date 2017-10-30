@@ -1,5 +1,11 @@
 language: clojure
 lein: 2.7.1
+before_install:
+  - git clone https://github.com/billosys/clj-xbee
+  - cd clj-xbee
+  - lein install
+  - cd ../
+  - rm -rf clj-xbee
 script:
   - lein build
 jdk:
