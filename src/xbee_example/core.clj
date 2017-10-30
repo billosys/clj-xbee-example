@@ -1,6 +1,7 @@
 (ns xbee-example.core
   (:require [clojusc.twig :as logger]
-            [xbee.device.xbee :as xbee]
+            [xbee.device.core :as xbee]
+            [xbee.device.raw802 :as raw802]
             [xbee.models.core :as models])
   (:import (com.digi.xbee.api.exceptions XBeeException))
   (:gen-class))
@@ -14,7 +15,7 @@
     (-main port baud-rate "This is a test message."))
   ([port baud-rate msg]
     (logger/set-level! '[xbee xbee-example com.digi] :info)
-    (let [device (xbee/create-device port baud-rate)]
-      (xbee/open device)
-      (xbee/send-broadcast-data device msg)
-      (xbee/close device))))
+    (let [device (raw802/create-device port baud-rate)]
+      (raw802/open device)
+      (raw802/send-broadcast-data device msg)
+      (raw802/close device))))
