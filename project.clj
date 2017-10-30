@@ -5,5 +5,7 @@
     :name "Apache License Version 2.0"
     :url "https://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [
-    [systems.billo/clj-xbee "0.1.0-SNAPSHOT"]
-    [org.clojure/clojure "1.8.0"]])
+    [org.clojure/clojure "1.8.0"]
+    [systems.billo/clj-xbee "0.1.0-SNAPSHOT"]]
+  :main xbee-example.core
+  :java-opts ["-Djava.library.path=lib"])
